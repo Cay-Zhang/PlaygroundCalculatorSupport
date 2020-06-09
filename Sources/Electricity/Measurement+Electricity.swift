@@ -73,3 +73,38 @@ public extension Measurement {
         (lhs.baseValue / rhs.baseValue) <| .baseUnit()
     }
 }
+
+// MARK: - 𝝙V = -E⃗·l⃗
+public extension Measurement {
+    static func * (field: Measurement<UnitElectricField>, distance: Measurement<UnitLength>) -> Measurement<UnitElectricPotentialDifference> {
+        (field.baseValue * distance.baseValue) <| .baseUnit()
+    }
+    
+    static func * (distance: Measurement<UnitLength>, field: Measurement<UnitElectricField>) -> Measurement<UnitElectricPotentialDifference> {
+        (field.baseValue * distance.baseValue) <| .baseUnit()
+    }
+    
+    static func / (lhs: Measurement<UnitElectricPotentialDifference>, rhs: Measurement<UnitElectricField>) -> Measurement<UnitLength> {
+        (lhs.baseValue / rhs.baseValue) <| .baseUnit()
+    }
+    
+    static func / (lhs: Measurement<UnitElectricPotentialDifference>, rhs: Measurement<UnitLength>) -> Measurement<UnitElectricField> {
+        (lhs.baseValue / rhs.baseValue) <| .baseUnit()
+    }
+}
+
+public extension VectorMeasurement2 {
+    static func * (fieldVector: VectorMeasurement2<UnitElectricField>, displacementVector: VectorMeasurement2<UnitLength>) -> Measurement<UnitElectricPotentialDifference> {
+        Measurement<UnitElectricPotentialDifference>(
+            value: (fieldVector.x.baseValue * displacementVector.x.baseValue) + (fieldVector.y.baseValue * displacementVector.y.baseValue),
+            unit: .baseUnit()
+        )
+    }
+    
+    static func * (displacementVector: VectorMeasurement2<UnitLength>, fieldVector: VectorMeasurement2<UnitElectricField>) -> Measurement<UnitElectricPotentialDifference> {
+        Measurement<UnitElectricPotentialDifference>(
+            value: (fieldVector.x.baseValue * displacementVector.x.baseValue) + (fieldVector.y.baseValue * displacementVector.y.baseValue),
+            unit: .baseUnit()
+        )
+    }
+}

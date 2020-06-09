@@ -2,6 +2,12 @@ import Foundation
 
 public extension Measurement where UnitType : Dimension {
     var baseValue: Double { self.converted(to: UnitType.baseUnit()).value }
+    
+    static prefix func - (measurement: Self) -> Self {
+        var copy = measurement
+        copy.value *= -1.0
+        return copy
+    }
 }
 
 infix operator <| : BitwiseShiftPrecedence

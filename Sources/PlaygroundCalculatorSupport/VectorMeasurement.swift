@@ -57,6 +57,13 @@ public struct VectorMeasurement2<UnitType: Dimension> : VectorMeasurement, Custo
         )
     }
     
+    static prefix func - (vector: Self) -> Self {
+        var copy = vector
+        copy.x = -vector.x
+        copy.y = -vector.y
+        return copy
+    }
+    
     public static func * (coefficient: Double, vector: Self) -> Self {
         var copy = vector
         copy.x.value *= coefficient
