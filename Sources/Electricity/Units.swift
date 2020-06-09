@@ -19,3 +19,5 @@ public class UnitCapacitance : Dimension {
     public static var nanofarads = UnitCapacitance(symbol: "nF", converter: UnitConverterLinear(coefficient: 1E-9))
     public override class func baseUnit() -> Self { Self.farads as! Self }
 }
+
+public typealias UnitElectricField = UnitQuotient<UnitForce, UnitElectricCharge>
