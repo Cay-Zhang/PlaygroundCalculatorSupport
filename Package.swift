@@ -5,11 +5,12 @@ import PackageDescription
 
 let package = Package(
     name: "PlaygroundCalculatorSupport",
+    platforms: [.macOS(SupportedPlatform.MacOSVersion.v10_14), .iOS(.v12)],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "PlaygroundCalculatorSupport",
-            targets: ["PlaygroundCalculatorSupport"]),
+            targets: ["PlaygroundCalculatorSupport", "Electricity"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -18,9 +19,15 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
+        // Modules
         .target(
             name: "PlaygroundCalculatorSupport",
-            dependencies: []),
+            dependencies: [],
+            path: "./Sources/PlaygroundCalculatorSupport"),
+        .target(
+            name: "Electricity",
+            dependencies: ["PlaygroundCalculatorSupport"],
+            path: "./Sources/Electricity"),
         .testTarget(
             name: "PlaygroundCalculatorSupportTests",
             dependencies: ["PlaygroundCalculatorSupport"]),
