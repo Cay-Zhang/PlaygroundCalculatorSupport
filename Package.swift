@@ -26,7 +26,7 @@ let package = Package(
             path: "./Sources/PlaygroundCalculatorSupport"),
         .target(
             name: "Electricity",
-            dependencies: ["PlaygroundCalculatorSupport"],
+            dependencies: [.target(name: "PlaygroundCalculatorSupport")],
             path: "./Sources/Electricity"),
         .testTarget(
             name: "PlaygroundCalculatorSupportTests",

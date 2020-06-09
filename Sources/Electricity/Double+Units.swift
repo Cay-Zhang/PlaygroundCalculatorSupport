@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PlaygroundCalculatorSupport
 
 public extension Double {
     var C: Measurement<UnitElectricCharge> { self <| UnitElectricCharge.coulombs }

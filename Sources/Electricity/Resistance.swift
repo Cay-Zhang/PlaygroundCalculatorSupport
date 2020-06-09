@@ -1,4 +1,12 @@
+//
+//  Resistance.swift
+//  Electricity
+//
+//  Created by Cay Zhang on 2020/6/9.
+//
+
 import Foundation
+import PlaygroundCalculatorSupport
 
 public func resistance(parallel Rs: [Double]) -> Double {
     1.0 / (Rs.map { 1.0 / $0 }.reduce(into: 0, +=))
