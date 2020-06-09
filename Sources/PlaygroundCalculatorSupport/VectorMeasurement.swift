@@ -57,6 +57,27 @@ public struct VectorMeasurement2<UnitType: Dimension> : VectorMeasurement, Custo
         )
     }
     
+    public static func * (coefficient: Double, vector: Self) -> Self {
+        var copy = vector
+        copy.x.value *= coefficient
+        copy.y.value *= coefficient
+        return copy
+    }
+    
+    public static func * (vector: Self, coefficient: Double) -> Self {
+        var copy = vector
+        copy.x.value *= coefficient
+        copy.y.value *= coefficient
+        return copy
+    }
+    
+    public static func * (lhs: Self, rhs: Self) -> Measurement<UnitType> {
+        Measurement<UnitType>(
+            value: (lhs.x.baseValue * rhs.x.baseValue) + (lhs.y.baseValue * rhs.y.baseValue),
+            unit: .baseUnit()
+        )
+    }
+    
     public func withMagnitude(_ newMagnitude: Measurement<UnitType>) -> Self {
         let multiplier = newMagnitude.baseValue / self.magnitude.baseValue
         var copy = self
