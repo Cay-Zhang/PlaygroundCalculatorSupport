@@ -69,3 +69,22 @@ public struct VectorMeasurement2<UnitType: Dimension> : VectorMeasurement, Custo
         "<\(x), \(y)>"
     }
 }
+
+precedencegroup DimensionalityOperationPrecedence {
+    higherThan: CastingPrecedence
+    lowerThan: AdditionPrecedence
+    associativity: left
+    assignment: false
+}
+
+infix operator ++ : DimensionalityOperationPrecedence
+
+public extension Measurement where UnitType : Dimension {
+    static func ++ (x: Self, y: Self) -> VectorMeasurement2<UnitType> {
+        VectorMeasurement2<UnitType>(x, y)
+    }
+    
+    static func ++ (magnitude: Self, angle: Measurement<UnitAngle>) -> VectorMeasurement2<UnitType> {
+        VectorMeasurement2<UnitType>(magnitude: magnitude, angle: angle)
+    }
+}
