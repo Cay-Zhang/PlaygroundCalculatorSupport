@@ -21,3 +21,9 @@ public class UnitCapacitance : Dimension {
 }
 
 public typealias UnitElectricField = UnitQuotient<UnitForce, UnitElectricCharge>
+
+public class UnitElectricFlux : Dimension {
+    public override class func baseUnit() -> Self {
+        UnitElectricFlux(symbol: "N·m²/C", converter: UnitConverterLinear(coefficient: 1.0)) as! Self
+    }
+}

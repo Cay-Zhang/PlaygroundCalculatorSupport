@@ -8,6 +8,20 @@ public extension Measurement where UnitType : Dimension {
         copy.value *= -1.0
         return copy
     }
+    
+    static func * (lhs: Measurement<UnitLength>, rhs: Measurement<UnitLength>) -> Measurement<UnitArea> {
+        (lhs.baseValue * rhs.baseValue).withBaseUnit(UnitArea.self)
+    }
+}
+
+public extension Double {
+    func withUnit<U: Unit>(_ unit: U) -> Measurement<U> {
+        return Measurement<U>(value: self, unit: unit)
+    }
+    
+    func withBaseUnit<U: Dimension>(_ unitType: U.Type) -> Measurement<U> {
+        return Measurement<U>(value: self, unit: U.baseUnit())
+    }
 }
 
 infix operator <| : BitwiseShiftPrecedence

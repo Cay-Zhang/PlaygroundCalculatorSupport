@@ -108,3 +108,14 @@ public extension VectorMeasurement2 {
         )
     }
 }
+
+// MARK: - Φ = E * A
+public extension Measurement {
+    static func * (field: Measurement<UnitElectricField>, area: Measurement<UnitArea>) -> Measurement<UnitElectricFlux> {
+        (field.baseValue * area.baseValue).withBaseUnit(UnitElectricFlux.self)
+    }
+    
+    static func * (area: Measurement<UnitArea>, field: Measurement<UnitElectricField>) -> Measurement<UnitElectricFlux> {
+        (field.baseValue * area.baseValue).withBaseUnit(UnitElectricFlux.self)
+    }
+}
