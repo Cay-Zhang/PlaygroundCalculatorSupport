@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "LANumerics",
+        "repositoryURL": "https://github.com/phlegmaticprogrammer/LANumerics",
+        "state": {
+          "branch": null,
+          "revision": "03af0129f4ac7a3e05cb6856b86b84e30f4e7bf4",
+          "version": "0.1.11"
+        }
+      },
+      {
+        "package": "swift-numerics",
+        "repositoryURL": "https://github.com/apple/swift-numerics",
+        "state": {
+          "branch": null,
+          "revision": "5dfc460876510988560170cee3702ab01b89587a",
+          "version": "0.0.5"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
