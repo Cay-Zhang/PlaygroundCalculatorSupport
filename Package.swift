@@ -23,7 +23,7 @@ let package = Package(
         // Modules
         .target(
             name: "PlaygroundCalculatorSupport",
-            dependencies: [],
+            dependencies: [.product(name: "LANumerics", package: "LANumerics")],
             path: "./Sources/PlaygroundCalculatorSupport"),
         .target(
             name: "Electricity",
