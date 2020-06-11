@@ -12,6 +12,10 @@ public extension Measurement where UnitType : Dimension {
     static func * (lhs: Measurement<UnitLength>, rhs: Measurement<UnitLength>) -> Measurement<UnitArea> {
         (lhs.baseValue * rhs.baseValue).withBaseUnit(UnitArea.self)
     }
+    
+    static func / (lhs: Self, rhs: Self) -> Double {
+        lhs.baseValue / rhs.baseValue
+    }
 }
 
 public extension Double {
