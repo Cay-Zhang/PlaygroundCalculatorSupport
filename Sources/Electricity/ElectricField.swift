@@ -23,3 +23,7 @@ public func electricField(byInfiniteLineOfChargeWithDensity chargeDensity: Measu
 public func electricField(byInfiniteSheetOfChargeWithDensity chargeDensity: Measurement<UnitQuotient<UnitElectricCharge, UnitArea>>) -> Measurement<UnitElectricField> {
     (chargeDensity.baseValue / 2.0 / 𝝴).withBaseUnit(UnitElectricField.self)
 }
+
+public func electricPotential(byParticle Q: Measurement<UnitElectricCharge>, _ r: Measurement<UnitLength>) -> Measurement<UnitElectricPotentialDifference> {
+    (k * Q.baseValue / r.baseValue).withBaseUnit(UnitElectricPotentialDifference.self)
+}

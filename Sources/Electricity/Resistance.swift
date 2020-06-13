@@ -20,6 +20,22 @@ public func resistance(series Rs: Measurement<UnitElectricResistance>...) -> Mea
     Rs.reduce(0.0 <| UnitElectricResistance.baseUnit(), +)
 }
 
+public func resistance(
+    insideRealBatteryWithIdealVoltage idealVoltage: Measurement<UnitElectricPotentialDifference>,
+    realVoltage: Measurement<UnitElectricPotentialDifference>,
+    resistanceOutside: Measurement<UnitElectricResistance>
+) -> Measurement<UnitElectricResistance> {
+    (resistanceOutside.baseValue * (idealVoltage - realVoltage).baseValue / realVoltage.baseValue).withBaseUnit(UnitElectricResistance.self)
+}
+
+public func voltage(
+    realBatteryWithIdealVoltage idealVoltage: Measurement<UnitElectricPotentialDifference>,
+    resistanceOutside: Measurement<UnitElectricResistance>,
+    resistanceInside: Measurement<UnitElectricResistance>
+) -> Measurement<UnitElectricPotentialDifference> {
+    (idealVoltage.baseValue * resistanceOutside.baseValue / (resistanceOutside.baseValue + resistanceInside.baseValue)).withBaseUnit(UnitElectricPotentialDifference.self)
+}
+
 public extension Measurement {
     static func * (current: Measurement<UnitElectricCurrent>, resistance: Measurement<UnitElectricResistance>) -> Measurement<UnitElectricPotentialDifference> {
         (current.baseValue * resistance.baseValue) <| .baseUnit()
