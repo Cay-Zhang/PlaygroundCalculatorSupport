@@ -45,3 +45,39 @@ let vec_b = sqrt(2).m ++ 135.0.degrees  // <-1.0 m, 1.0 m>
 // Dot Product
 vec_a * vec_b  // 0.01 m
 ```
+## Electricity
+Under Module **Electricity**.
+### Global Constants
+- Vacuum permittivity `𝝴`
+- Coulomb Constant `k`
+### Units
+
+Dimension | Base Unit
+--------- | ---------
+`UnitElectricCharge` | `coulombs` (C)
+`UnitElectricResistance` | `ohms` (Ω)
+`UnitElectricPotentialDifference` | `volts` (V)
+`UnitElectricCurrent` | `amperes` (A)
+`UnitCapacitance` | `farads` (F)
+`UnitElectricField` | `newtonsPerCoulomb` (NpC)
+`UnitElectricFlux` | `newtonSquareMetersPerCoulomb`
+
+### Utilities
+#### Circuits Solving
+![Example - Resistances](https://i.loli.net/2020/06/15/5ERwHplnKrGNCxD.png)
+```swift
+// Find V1
+let V = 12.V
+let R1 = 13.Ω
+let R2 = 22.Ω
+let R3 = 16.Ω
+let R4 = 18.Ω
+let R5 = 28.Ω
+let R6 = 13.Ω
+
+let R14 = resistance(series: R1, R4)  // 31.0 Ω
+let R124 = resistance(parallel: R14, R2)  // 12.86792 Ω
+
+let V14 = R124 / (R124 + R6) * V  // 5.96937 V
+let V1 = R1 / (R1 + R4) * V14  // 2.50328 V
+```
