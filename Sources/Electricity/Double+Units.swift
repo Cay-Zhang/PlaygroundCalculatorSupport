@@ -10,7 +10,7 @@ import PlaygroundCalculatorSupport
 
 public extension Double {
     var C: Measurement<UnitElectricCharge> { self <| UnitElectricCharge.coulombs }
-    var μC: Measurement<UnitElectricCharge> { self <| UnitElectricCharge.microCoulombs }
+    var μC: Measurement<UnitElectricCharge> { self <| UnitElectricCharge.microcoulombs }
     var nC: Measurement<UnitElectricCharge> { self <| UnitElectricCharge.nanocoulombs }
     
     var F: Measurement<UnitCapacitance> { self <| UnitCapacitance.farads }

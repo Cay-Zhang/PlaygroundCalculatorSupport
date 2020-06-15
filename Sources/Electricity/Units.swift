@@ -9,7 +9,7 @@ import Foundation
 import PlaygroundCalculatorSupport
 
 public extension UnitElectricCharge {
-    static var microCoulombs: UnitElectricCharge = UnitElectricCharge(symbol: "μC", converter: UnitConverterLinear(coefficient: 1E-6))
+    static var microcoulombs: UnitElectricCharge = UnitElectricCharge(symbol: "μC", converter: UnitConverterLinear(coefficient: 1E-6))
     static var nanocoulombs: UnitElectricCharge = UnitElectricCharge(symbol: "nC", converter: UnitConverterLinear(coefficient: 1E-9))
 }
 
@@ -22,8 +22,12 @@ public class UnitCapacitance : Dimension {
 
 public typealias UnitElectricField = UnitQuotient<UnitForce, UnitElectricCharge>
 
+public extension UnitElectricField {
+    static var newtonsPerCoulomb: UnitElectricField = UnitForce.newtons / UnitElectricCharge.coulombs
+}
+
 public class UnitElectricFlux : Dimension {
-    public override class func baseUnit() -> Self {
-        UnitElectricFlux(symbol: "N·m²/C", converter: UnitConverterLinear(coefficient: 1.0)) as! Self
-    }
+    public static var newtonSquareMetersPerCoulomb = UnitElectricFlux(symbol: "N·m²/C", converter: UnitConverterLinear(coefficient: 1.0))
+    
+    public override class func baseUnit() -> Self { newtonSquareMetersPerCoulomb as! Self }
 }
