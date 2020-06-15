@@ -1,5 +1,19 @@
 # PlaygroundCalculatorSupport
 Turn your Swift Playground into an interactive calculator, with **units** and **vector** support.
+
+
+## Features
+- [x] Based on **Foundation**'s highly extensible unit system
+- [x] Integrate units into calculations in a quick and concise way
+- [x] Easy-to-use vector support (also with units)
+- [x] Use [**LANumerics**](https://github.com/phlegmaticprogrammer/LANumerics) to solve linear equations
+
+## Installation
+**PlaygroundCalculatorSupport** is available as a Swift Package. However, currently there's no built-in way to integrate a Swift Package into a Swift Playground inside Xcode. It is recommended to use [**Arena**](https://github.com/finestructure/Arena) to do so.
+```
+arena -n "PlaygroundCalculator" Cay-Zhang/PlaygroundCalculatorSupport@branch:master
+```
+
 ```swift
 import PlaygroundCalculatorSupport
 import Electricity
