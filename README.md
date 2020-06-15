@@ -13,6 +13,25 @@ Turn your Swift Playground into an interactive calculator, with **units** and **
 ```
 arena -n "PlaygroundCalculator" Cay-Zhang/PlaygroundCalculatorSupport@branch:master
 ```
+## Basic Support
+Under Module **PlaygroundCalculatorSupport**.
+### Calculation with Units
+```swift
+3.0.cm + 4.m  // 4.03 m
+3.cm / 4.cm  // 0.75
+3.0 * 4.m³  // 12.0 m³
+
+3.m * 24.degrees  // Error
+
+12.0.cm.converted(to: .meters)  // 0.12 m
+30.0.degrees.converted(to: .revolutions)  // 0.08333 rev
+
+// Length -> Area -> Volume
+let a = 8.7.cm, b = 7.3.cm
+let A_rectangle = a * b  // 0.00635 m²
+A_rectangle.converted(to: .squareInches)  // 9.84407 in²
+let V_cuboid = A_rectangle * 7.m  // 0.04446 m³
+```
 
 ```swift
 import PlaygroundCalculatorSupport
