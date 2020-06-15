@@ -26,4 +26,6 @@ public extension Double {
     var A: Measurement<UnitElectricCurrent> { self <| UnitElectricCurrent.amperes }
     var mA: Measurement<UnitElectricCurrent> { self <| UnitElectricCurrent.milliamperes }
     var μA: Measurement<UnitElectricCurrent> { self <| UnitElectricCurrent.microamperes }
+    
+    var NpC: Measurement<UnitElectricField> { self.withUnit(UnitForce.newtons / UnitElectricCharge.coulombs) }
 }

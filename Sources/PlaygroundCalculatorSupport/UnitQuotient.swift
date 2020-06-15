@@ -42,4 +42,18 @@ public extension Measurement {
             unit: A.baseUnit()
         )
     }
+    
+    static func * <A: Dimension, B: Dimension> (quotientVector: VectorMeasurement2<UnitQuotient<A, B>>, factor: Measurement<B>) -> VectorMeasurement2<A> {
+        VectorMeasurement2<A>(
+            (quotientVector.x.baseValue * factor.baseValue).withBaseUnit(A.self),
+            (quotientVector.y.baseValue * factor.baseValue).withBaseUnit(A.self)
+        )
+    }
+    
+    static func * <A: Dimension, B: Dimension> (factor: Measurement<B>, quotientVector: VectorMeasurement2<UnitQuotient<A, B>>) -> VectorMeasurement2<A> {
+        VectorMeasurement2<A>(
+            (quotientVector.x.baseValue * factor.baseValue).withBaseUnit(A.self),
+            (quotientVector.y.baseValue * factor.baseValue).withBaseUnit(A.self)
+        )
+    }
 }
