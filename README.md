@@ -45,10 +45,31 @@ let vec_b = sqrt(2).m ++ 135.0.degrees  // <-1.0 m, 1.0 m>
 // Dot Product
 vec_a * vec_b  // 0.01 m
 ```
+### Linear Algebra (LANumerics)
+```swift
+// Example of solving an electric circuit problem involving a system of linear equations
+import PlaygroundCalculatorSupport
+import Electricity
+import LANumerics
+
+let Va = 15.V, Ra = 18.Ω
+let Vb = 12.V, Rb = 19.Ω
+let Vc = 36.V, Rc = 12.Ω
+
+let Ia_Ib_Ic = Matrix.withBaseValue([
+    [1.Ω, 1.Ω, 1.Ω],
+    [Ra , -Rb, 0.Ω],
+    [Ra , 0.Ω, -Rc]
+]).solve(withBaseValue:
+    [0.V, Va - Vb, Va - Vc]
+)  // [-0.46183, -0.59542, 1.05725]
+
+let Ia = Ia_Ib_Ic[0].A  // -0.46183 A
+```
 ## Electricity
 Under Module **Electricity**.
 ### Global Constants
-- Vacuum permittivity `𝝴`
+- Vacuum Permittivity `𝝴`
 - Coulomb Constant `k`
 ### Units
 
