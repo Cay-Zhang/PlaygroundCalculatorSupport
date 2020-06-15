@@ -1,4 +1,4 @@
-import Foundation
+@_exported import Foundation
 
 public func abs<U: Unit>(_ measurement: Measurement<U>) -> Measurement<U> {
     var copy = measurement
